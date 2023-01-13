@@ -2,15 +2,20 @@ import math
 import string
 import sys
 
-password_user = str(input("Your password:\n"))
+# password_user = str(input("Your password:\n"))
 
 
 def calculate_entropy(password: str) -> float:
+
     has_digits = any(x in string.digits for x in password)
     has_ascii_lowercase = any(x in string.ascii_lowercase for x in password)
     has_ascii_uppercase = any(x in string.ascii_uppercase for x in password)
     has_punctuation = any(x in string.punctuation for x in password)
+    has_space = any(x in string.whitespace for x in password)
     pool_size = 0
+    if has_space:
+        print("has_space")
+        pool_size += len(string.whitespace)
     if has_digits:
         print('has_digits')
         pool_size += len(string.digits)
@@ -53,8 +58,8 @@ def result(res: float) -> str:
     return printed_result
 
 
-result(calculate_entropy(password_user))
+# result(calculate_entropy(password_user))
 
 if __name__ == "__main__":
     pw = sys.argv[1]
-    print(calculate_entropy(pw))
+    print(result(calculate_entropy(pw)))

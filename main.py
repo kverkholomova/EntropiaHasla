@@ -1,11 +1,11 @@
 import math
 import string
+import sys
 
-# input("Your password:\n")
 password_user = str(input("Your password:\n"))
 
 
-def calculate_entropy(password: str):
+def calculate_entropy(password: str) -> float:
     has_digits = any(x in string.digits for x in password)
     has_ascii_lowercase = any(x in string.ascii_lowercase for x in password)
     has_ascii_uppercase = any(x in string.ascii_uppercase for x in password)
@@ -35,20 +35,25 @@ def calculate_entropy(password: str):
     return result
 
 
-print(calculate_entropy(password_user))
+# print(calculate_entropy(password_user))
 
 
-def result(res: float):
+def result(res: float) -> str:
+    global printed_result
     if res <= 25:
-        print("Your password is poor")
+        printed_result = "Your password is poor"
     elif 25 < res <= 50:
-        print("Your password is week")
+        printed_result = "Your password is week"
     elif 50 < res <= 75:
-        print("Your password is reasonable")
+        printed_result = "Your password is reasonable"
     elif 75 < res <= 100:
-        print("Your password is good")
+        printed_result = "Your password is good"
     elif res > 100:
-        print("Your password is excellent")
+        printed_result = "Your password is excellent"
+    return printed_result
 
 
 result(calculate_entropy(password_user))
+if __name__ == "__main__":
+    pw = sys.argv[1]
+    print(calculate_entropy(pw))

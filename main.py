@@ -54,6 +54,7 @@ def result(res: float) -> str:
 
 
 result(calculate_entropy(password_user))
+
 if __name__ == "__main__":
     pw = sys.argv[1]
     print(calculate_entropy(pw))

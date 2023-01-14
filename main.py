@@ -14,19 +14,19 @@ def calculate_entropy(password: str) -> float:
     has_space = any(x in string.whitespace for x in password)
     pool_size = 0
     if has_space:
-        print("has_space")
+        print("password_has_space")
         pool_size += len(string.whitespace)
     if has_digits:
-        print('has_digits')
+        print('password_has_digits')
         pool_size += len(string.digits)
     if has_ascii_lowercase:
-        print('has_ascii_lowercase')
+        print('password_has_ascii_lowercase')
         pool_size += len(string.ascii_lowercase)
     if has_ascii_uppercase:
-        print('has_ascii_uppercase')
+        print('password_has_ascii_uppercase')
         pool_size += len(string.ascii_uppercase)
     if has_punctuation:
-        print('has_punctuation')
+        print('password_has_punctuation')
         pool_size += len(string.punctuation)
 
     password_len = len(password)
@@ -60,6 +60,15 @@ def result(res: float) -> str:
 
 # result(calculate_entropy(password_user))
 
+
 if __name__ == "__main__":
-    pw = sys.argv[1]
+    if len(sys.argv) > 1:
+        print("Command line mode")
+        pw = sys.argv[1]
+    else:
+        print("Interactive mode")
+        pw = input("Your password: ")
     print(result(calculate_entropy(pw)))
+# if __name__ == "__main__":
+#     pw = sys.argv[1]
+#     print(result(calculate_entropy(pw)))

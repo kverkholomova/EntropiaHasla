@@ -2,8 +2,6 @@ import math
 import string
 import sys
 
-# password_user = str(input("Your password:\n"))
-
 
 def calculate_entropy(password: str) -> float:
 
@@ -40,9 +38,6 @@ def calculate_entropy(password: str) -> float:
     return result
 
 
-# print(calculate_entropy(password_user))
-
-
 def result(res: float) -> str:
     global printed_result
     if res <= 25:
@@ -58,9 +53,6 @@ def result(res: float) -> str:
     return printed_result
 
 
-# result(calculate_entropy(password_user))
-
-
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         print("Command line mode")
@@ -69,6 +61,4 @@ if __name__ == "__main__":
         print("Interactive mode")
         pw = input("Your password: ")
     print(result(calculate_entropy(pw)))
-# if __name__ == "__main__":
-#     pw = sys.argv[1]
-#     print(result(calculate_entropy(pw)))
+
